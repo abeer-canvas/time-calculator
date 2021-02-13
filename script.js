@@ -36,39 +36,39 @@ const getTotalTime = function() {
 const minuteMinus = function(timeArr){
   const hourRegex = /^[0-9]{1,2}/gi;
   const minuteRegex = /[0-9]{1,2}(?=[ap]m)/gi;
-  const ampmRegex = /[ap]m/gi; //refactor
-
-  let hour = 0;
-  let minute = 0;
-  let ampm;
+  const ampmRegex = /[ap]m/gi; 
 
   // Changes below
   // For first element
-  hour = Number(timeArr[0].match(hourRegex).join(''));
-  minute = Number(timeArr[0].match(minuteRegex).join(''));
-  ampm = timeArr[0].match(ampmRegex).join('');
-  let firstMins = getTotalMin(hour, minute, ampm);
-  hour = 0;
-  minute = 0;
-  ampm = undefined;
+  const hour1 = Number(timeArr[0].match(hourRegex).join(''));
+  const minute1 = Number(timeArr[0].match(minuteRegex).join(''));
+  const ampm1 = timeArr[0].match(ampmRegex).join('');
+  const firstMins = getTotalMin1(hour1, minute1, ampm1);
 
   // For second element
-  hour = Number(timeArr[1].match(hourRegex).join(''));
-  minute = Number(timeArr[1].match(minuteRegex).join(''));
-  ampm = timeArr[1].match(ampmRegex).join('');
-  let secondMins = getTotalMin(hour, minute, ampm);
-  hour = 0;
-  minute = 0;
-  ampm = undefined;
+  const hour2 = Number(timeArr[1].match(hourRegex).join(''));
+  const minute2 = Number(timeArr[1].match(minuteRegex).join(''));
+  const ampm2 = timeArr[1].match(ampmRegex).join('');
+  const secondMins = getTotalMin2(hour2, minute2, ampm1, ampm2);
 
   return Number(secondMins - firstMins);
 };
 
-const getTotalMin = function(hour, minute, ampm){
+const getTotalMin1 = function(hour, minute, ampm){
   // 12am will be 00:00
   if(hour === 12 && ampm === 'am') hour = 0;
 
   if(hour !== 12 && ampm === 'pm') hour += 12;
+
+  return (hour*60)+minute;
+}
+
+const getTotalMin2 = function(hour, minute, ampm1, ampm2){
+  if(hour !== 12 && ampm2 === 'pm') {
+    hour += 12;
+  } else if (ampm1 === 'pm' && ampm2 === 'am'){
+    hour += 24;
+  }
 
   return (hour*60)+minute;
 }
