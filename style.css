@@ -40,6 +40,11 @@ body {
   font-size: 18px;
   padding: 5px 0;
   font-family: 'Lato', sans-serif;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.btn-submit:visited{
+  border: none;
 }
 
 .result-area {
@@ -47,9 +52,20 @@ body {
   margin: 100px auto 15px auto;
   color: #ffffff;
   font-family: 'Lato', sans-serif;
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+}
+
+.result-area h2{
+  text-align: center;
 }
 
 .result-text {
-  font-size: 23px;
-  color: white;
+  font-size: 30px;
+  text-align: center;
+  background-color: rgb(233, 178, 105);
+  padding: 30px 40px;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
