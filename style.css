@@ -25,7 +25,7 @@ body {
 .input-times {
   display: block;
   width: 98%;
-  border: 2px solid rgb(255, 128, 0);
+  border: 2px solid rgb(233, 178, 105);
   border-radius: 9px;
   margin-bottom: 15px;
   padding-top: 10px;
@@ -33,25 +33,32 @@ body {
   font-family: 'Lato', sans-serif;
 }
 
+.input-times:focus{
+  outline: none;
+}
+
 .btn-submit {
   width: 100%;
   border-radius: 5px;
   border: none;
   font-size: 18px;
-  padding: 5px 0;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 15px 0 10px 0;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  background-color: rgb(233, 178, 105);
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: bold;
 }
 
-.btn-submit:visited{
-  border: none;
+.btn-submit:focus{
+  outline: 0;
 }
 
 .result-area {
   width: 80%;
   margin: 100px auto 15px auto;
   color: #ffffff;
-  font-family: 'Lato', sans-serif;
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
@@ -59,10 +66,12 @@ body {
 
 .result-area h2{
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .result-text {
   font-size: 30px;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   background-color: rgb(233, 178, 105);
   padding: 30px 40px;
