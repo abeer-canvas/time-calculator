@@ -18,12 +18,14 @@ btn.addEventListener('click', function () {
 
   // Getting total minutes
   totalMinute = 0;
-  blocks.forEach(block => {
-    let times = [];
-    const regex = /[0-9]{1,2}:[0-9]{1,2}[ap]m/gi;
-    times = block.match(regex);
-    totalMinute += minuteMinus(times);
-  });
+  if (blocks) {
+    blocks.forEach(block => {
+      let times = [];
+      const regex = /[0-9]{1,2}:[0-9]{1,2}[ap]m/gi;
+      times = block.match(regex);
+      totalMinute += minuteMinus(times);
+    });
+  }
 
   // Getting totalExtraMin
   totalExtraMin = 0;
