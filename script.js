@@ -5,15 +5,18 @@ const btn = document.querySelector(".btn-submit");
 const result = document.querySelector(".result-text");
 let inputValue;
 let totalMinute = 0;
+let totalExtraMin = 0;
 
-btn.addEventListener('click', function(){
+btn.addEventListener('click', function () {
   // Getting Blocks
   inputValue = input.value;
-  if(inputValue === '') return;
+  if (inputValue === '') return;
   const regex = /[0-9]{1,2}:[0-9]{1,2}[ap]m - [0-9]{1,2}:[0-9]{1,2}[ap]m/gi;
+  const regexExtraMin = /[\+\-][0-9]+(?=(m|min|mins|mint|mints|minute|minutes)\))/gi;
   let blocks = inputValue.match(regex);
-  // console.log(blocks);
-  
+  let extraMinBlocks = inputValue.match(regexExtraMin);
+
+  // Getting total minutes
   totalMinute = 0;
   blocks.forEach(block => {
     let times = [];
@@ -22,26 +25,42 @@ btn.addEventListener('click', function(){
     totalMinute += minuteMinus(times);
   });
 
+  // Getting totalExtraMin
+  totalExtraMin = 0;
+  if (extraMinBlocks) {
+    extraMinBlocks.forEach(block => {
+      let Num = Number(block);
+      totalExtraMin += Num;
+    });
+  }
+
+  // Subtracting the extraTotalMin
+  if (totalExtraMin !== 0) {
+    totalMinute += totalExtraMin;
+  }
+
+  console.log(totalMinute);
+
   getTotalTime();
   input.value = '';
 });
 
-const getTotalTime = function() {
-  let hour = (totalMinute-(totalMinute%60))/60;
-  let minute = totalMinute%60;
+const getTotalTime = function () {
+  let hour = (totalMinute - (totalMinute % 60)) / 60;
+  let minute = totalMinute % 60;
 
   result.textContent = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
 }
 
-const minuteMinus = function(timeArr){
+const minuteMinus = function (timeArr) {
   const hourRegex = /^[0-9]{1,2}/gi;
   const minuteRegex = /[0-9]{1,2}(?=[ap]m)/gi;
-  const ampmRegex = /[ap]m/gi; 
+  const ampmRegex = /[ap]m/gi;
 
   // Changes below
   // For first element
   const getHour1 = Number(timeArr[0].match(hourRegex).join(''));
-  
+
   const minute1 = Number(timeArr[0].match(minuteRegex).join(''));
   const ampm1 = timeArr[0].match(ampmRegex).join('');
   const hour1 = get24FormatHours(getHour1, ampm1);
@@ -69,21 +88,21 @@ h > 12am => h = h//
 XXpm -> XXam => am+24
  */
 
-const get24FormatHours = function(hh, apm){
-  if(hh < 12 && apm === 'pm'){
-    return hh+12;
-  } else if(hh === 12 && apm === 'am'){
+const get24FormatHours = function (hh, apm) {
+  if (hh < 12 && apm === 'pm') {
+    return hh + 12;
+  } else if (hh === 12 && apm === 'am') {
     return 0;
-  } else{
+  } else {
     return hh;
   }
 }
 
-const getTotalMin = function(hour, minute, ampm1 = undefined, ampm2 = undefined){
-  if(ampm1 && ampm2){
-    if(ampm1 === 'pm' && ampm2 === 'am') {
+const getTotalMin = function (hour, minute, ampm1 = undefined, ampm2 = undefined) {
+  if (ampm1 && ampm2) {
+    if (ampm1 === 'pm' && ampm2 === 'am') {
       hour += 24;
     }
   }
-  return (hour*60)+minute;
+  return (hour * 60) + minute;
 }
