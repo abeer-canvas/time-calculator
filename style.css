@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(243, 233, 233);
+  background-color: rgb(255, 255, 255);
 }
 
 .page {
@@ -7,13 +7,13 @@ body {
 }
 
 .box {
-  background: linear-gradient(to bottom right, #cd969e, #d2966a);
+  /* background: linear-gradient(to bottom right, #cd969e, #d2966a); */
   width: 500px;
   height: 700px;
   margin: 10vh auto 0 auto;
   padding: 15px;
   border-radius: 6px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .input-area {
@@ -25,12 +25,12 @@ body {
 .input-times {
   display: block;
   width: 98%;
-  border: 2px solid rgb(233, 178, 105);
+  border: 1px linear-gradient(to bottom right, #003366 0%, #669999 100%);
   border-radius: 9px;
   margin-bottom: 15px;
   padding-top: 10px;
   font-size: 18px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .input-times:focus{
@@ -41,11 +41,12 @@ body {
   width: 100%;
   border-radius: 5px;
   border: none;
-  font-size: 18px;
-  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  font-family: 'Roboto', sans-serif;
   padding: 15px 0 10px 0;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  background-color: rgb(233, 178, 105);
+  background: linear-gradient(to bottom right, #003366 0%, #669999 100%);
   cursor: pointer;
   color: #ffffff;
   font-weight: bold;
@@ -67,13 +68,15 @@ body {
 .result-area h2{
   text-align: center;
   font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  color: #003366;
 }
 
 .result-text {
   font-size: 30px;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-color: rgb(233, 178, 105);
+  background: linear-gradient(to bottom right, #003366 0%, #669999 100%);
   padding: 30px 40px;
   border-radius: 5px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
